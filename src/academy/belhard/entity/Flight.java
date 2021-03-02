@@ -48,13 +48,13 @@ public class Flight {
 
     @Override
     public String toString() {
-        return "Flights{" +
+        return "Flights:" +
                 "id=" + id +
                 ", planeId=" + planeId +
                 ", pilotId=" + pilotId +
                 ", date=" + date +
                 ", time=" + time +
                 ", number='" + number +
-                '}';
+                '.';
     }
 }

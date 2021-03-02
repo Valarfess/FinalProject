@@ -1,6 +1,7 @@
 package academy.belhard;
 
 import academy.belhard.db.reader.FullDataReader;
+import academy.belhard.db.writer.SQLDataWriter;
 import academy.belhard.entity.Flight;
 import academy.belhard.entity.Pilot;
 import academy.belhard.entity.Plane;
@@ -13,19 +14,23 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        PilotDataReader pilotDataReader = new PilotDataReader("data\\pilots.csv");
-        List<Pilot> pilot = PilotDataReader.read();
-        pilot.forEach(System.out::println);
 
-        PlaneDataReader planeDataReader = new PlaneDataReader("data\\planes.csv");
-        List<Plane> planes = PlaneDataReader.read();
+
+        PilotDataReader pilotDataReader = new PilotDataReader("C:\\Users\\Fess\\IdeaProjects\\FinalProject\\src\\academy\\belhard\\db\\data\\pilots.csv");
+        List<Pilot> pilots = pilotDataReader.read();
+        pilots.forEach(System.out::println);
+
+        PlaneDataReader planeDataReader = new PlaneDataReader("C:\\Users\\Fess\\IdeaProjects\\FinalProject\\src\\academy\\belhard\\db\\data\\planes.csv");
+        List<Plane> planes = planeDataReader.read();
         planes.forEach(System.out::println);
 
-        FlightDataReader flightDataReader = new FlightDataReader("data\\flights.csv");
-        List<Flight> flights = FlightDataReader.read();
-        pilot.forEach(System.out::println);
+        FlightDataReader flightDataReader = new FlightDataReader("C:\\Users\\Fess\\IdeaProjects\\FinalProject\\src\\academy\\belhard\\db\\data\\flights.csv");
+        List<Flight> flights = flightDataReader.read();
+        flights.forEach(System.out::println);
 
-        FullDataReader.read().forEach(System.out::println);
+        SQLDataWriter.addToPilots(Pilot pilots);
+
+//        FullDataReader.read().forEach(System.out::println);
     }
 
 }

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConnectionUtil {
 
-    public static final String URL = "jdbc:mysql://localhost:3306/homework_11?useUnicode=true&serverTimezone=UTC";
+    public static final String URL = "jdbc:mysql://localhost:3306/airports_db?useUnicode=true&serverTimezone=UTC";
     public static final String USER = "root";
     public static final String PASS = "Valar211922fess";
 
