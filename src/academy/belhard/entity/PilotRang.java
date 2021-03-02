@@ -1,5 +1,5 @@
 package academy.belhard.entity;
 
-public enum PilotsRang {
+public enum PilotRang {
     MASTER,SENIOR,JUNIOR,GOD,DEVIL
 }

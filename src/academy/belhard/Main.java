@@ -1,33 +1,32 @@
 package academy.belhard;
 
 import academy.belhard.db.reader.FullDataReader;
-import academy.belhard.entity.Flights;
-import academy.belhard.entity.Pilots;
-
-import academy.belhard.entity.Planes;
-import academy.belhard.readers.FlightsDataReader;
-import academy.belhard.readers.PilotsDataReader;
-import academy.belhard.readers.PlanesDataReader;
+import academy.belhard.entity.Flight;
+import academy.belhard.entity.Pilot;
+import academy.belhard.entity.Plane;
+import academy.belhard.readers.FlightDataReader;
+import academy.belhard.readers.PilotDataReader;
+import academy.belhard.readers.PlaneDataReader;
 
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        PilotsDataReader pilotsDataReader = new PilotsDataReader("data\\pilots.csv");
-        List<Pilots> pilots = PilotsDataReader.read();
-        pilots.forEach(System.out::println);
+        PilotDataReader pilotDataReader = new PilotDataReader("data\\pilots.csv");
+        List<Pilot> pilot = PilotDataReader.read();
+        pilot.forEach(System.out::println);
 
-        PlanesDataReader planesDataReader = new PlanesDataReader("data\\planes.csv");
-        List<Planes> planes = PlanesDataReader.read();
+        PlaneDataReader planeDataReader = new PlaneDataReader("data\\planes.csv");
+        List<Plane> planes = PlaneDataReader.read();
         planes.forEach(System.out::println);
 
-        FlightsDataReader flightsDataReader = new FlightsDataReader("data\\flights.csv");
-        List<Flights> flights = FlightsDataReader.read();
-        pilots.forEach(System.out::println);
+        FlightDataReader flightDataReader = new FlightDataReader("data\\flights.csv");
+        List<Flight> flights = FlightDataReader.read();
+        pilot.forEach(System.out::println);
 
         FullDataReader.read().forEach(System.out::println);
     }
-	// write your code here
-    }
+
 }
+

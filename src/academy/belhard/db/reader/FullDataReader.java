@@ -2,6 +2,7 @@ package academy.belhard.db.reader;
 
 import academy.belhard.db.connection.ConnectionUtil;
 import academy.belhard.entity.FullData;
+import academy.belhard.entity.PilotRang;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,7 +35,7 @@ public class FullDataReader {
                 String firstName = resultSet.getString("firstname");
                 String lastName = resultSet.getString("lastName");
                 String code = resultSet.getString("code");
-                String rang = resultSet.getString("rang");
+                PilotRang rang = PilotRang.valueOf(resultSet.getString("rang"));
 
                 result.add(new FullData(id, date, time, tailNumber, brand, model, passengerCapacity, firstName, lastName, code, rang));
             }

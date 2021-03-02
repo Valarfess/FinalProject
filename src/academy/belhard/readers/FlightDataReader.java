@@ -1,29 +1,29 @@
 package academy.belhard.readers;
 
 import academy.belhard.builders.FlightsBuilder;
-import academy.belhard.entity.Flights;
+import academy.belhard.entity.Flight;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlightsDataReader implements FileDataReader<Flights> {
+public class FlightDataReader implements FileDataReader<Flight> {
     private final String fileName;
 
-    public FlightsDataReader(String fileName) {
+    public FlightDataReader(String fileName) {
         this.fileName = fileName;
     }
 
     @Override
-    public List<Flights> read() {
-        List<Flights> flights = new ArrayList<>();
+    public List<Flight> read() {
+        List<Flight> flights = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String flightsLine;
 
             while ((flightsLine = reader.readLine()) != null) {
-                Flights flight = FlightsBuilder.builder(flightsLine);
+                Flight flight = FlightsBuilder.builder(flightsLine);
 
                 flights.add(flight);
             }

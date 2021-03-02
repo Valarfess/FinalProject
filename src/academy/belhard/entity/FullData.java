@@ -13,9 +13,9 @@ public class FullData {
     private String firstName;
     private String lastName;
     private String code;
-    private String rang;
+    private PilotRang rang;
 
-    public FullData(Integer id, Date date, Date time, String tailNumber, String brand, String model, Integer passengerCapacity, String firstName, String lastName, String code, String rang) {
+    public FullData(Integer id, Date date, Date time, String tailNumber, String brand, String model, Integer passengerCapacity, String firstName, String lastName, String code, PilotRang rang) {
         this.id = id;
         this.date = date;
         this.time = time;
@@ -69,7 +69,7 @@ public class FullData {
         return code;
     }
 
-    public String getRang() {
+    public PilotRang getRang() {
         return rang;
     }
 

@@ -1,9 +1,9 @@
 package academy.belhard.builders;
 
-import academy.belhard.entity.Planes;
+import academy.belhard.entity.Plane;
 
 public class PlanesBuilder {
-    public static Planes builder(String planesline) {
+    public static Plane builder(String planesline) {
         String[] planesData = planesline.split(";");
 
         int id = Integer.parseInt(planesData[0]);
@@ -12,6 +12,6 @@ public class PlanesBuilder {
         Integer passengerCapacity = Integer.parseInt(planesData[3]);
         String tailnumber = planesData[4];
 
-        return new Planes (id, brand, model, passengerCapacity, tailnumber);
+        return new Plane(id, brand, model, passengerCapacity, tailnumber);
     }
 }

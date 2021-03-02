@@ -4,7 +4,7 @@ import java.sql.Time;
 import java.util.Date;
 
 
-public class Flights {
+public class Flight {
 
     private int id;
     private int planeId;
@@ -13,7 +13,7 @@ public class Flights {
     private Time time;
     private String number;
 
-    public Flights(int id, int planeId, int pilotId, Date date, Time time, String number) {
+    public Flight(int id, int planeId, int pilotId, Date date, Time time, String number) {
         this.id = id;
         this.planeId = planeId;
         this.pilotId = pilotId;
