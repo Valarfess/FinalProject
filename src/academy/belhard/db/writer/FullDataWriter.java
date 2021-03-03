@@ -10,24 +10,19 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class FullDataWriter {
-    private static final String INSERT = "INSERT INTO students (id, first_name, last_name, year_of_birth, school_id) VALUES(?, ?, ?, ?, ?)";
 
-    public static void FullDataWriter(String fileName, List<FullData> fulldata) {
+    public static void FullDataWriter(String fileName, List<FullData> result) {
 
         try (FileWriter writer = new FileWriter(fileName)) {
-            for (FullData fullData : fulldata) {
-                writer.write(fullData.getFirstName() + "  " +
-                        fullData.getId() + "  " +
-                        fullData.getDate() + "  " +
-                        fullData.getTime() + "  " +
-                        fullData.getTailNumber() + "  " +
-                        fullData.getBrand() + "  " +
-                        fullData.getModel() + "  " +
-                        fullData.getPassengerCapacity() + "  " +
-                        fullData.getFirstName() + "  " +
-                        fullData.getLastName() + "  " +
-                        fullData.getCode() + "  " +
-                        fullData.getRang() + "  " +
+            for (FullData resultFullData : result) {
+                writer.write(resultFullData.getNumber() + ";" +
+                        resultFullData.getDate() + ";" +
+                        resultFullData.getTime() + ";" +
+                        resultFullData.getTailNumber() + ";" +
+                        resultFullData.getBrandModel() + ";" +
+                        resultFullData.getPassengerCapacity() + ";" +
+                        resultFullData.getFirstNameLast() + ";" +
+                        resultFullData.getCodeRang() + ";" +
                         "\n");
             }
         } catch (IOException e) {

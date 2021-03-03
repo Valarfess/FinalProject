@@ -4,17 +4,17 @@ import academy.belhard.db.connection.ConnectionUtil;
 import academy.belhard.entity.FullData;
 import academy.belhard.entity.PilotRang;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class FullDataReader {
 
-    private static final String SELECT_FULL_DATA = "SELECT fl.id, fl.date, fl.time, pl.tailNumber, pl.brand, pl.model, pl.passengerCapacity, pi.firstName, pi.lastName, pi.code, pi.rang FROM pilots AS pi LEFT JOIN planes AS pl ON pi.id = pl.plane_id";
+    private static final String SELECT_FULL_DATA = "SELECT fl.number, fl.date, fl.time, pl.tailNumber, CONCAT_WS (' ',pl.brand, pl.model), pl.passengerCapacity, "+
+    "CONCAT(CONCAT_WS(' ',pi.firstName, SUBSTR(pi.lastName, 1, 1)),'.'), CONCAT_WS (' ', pi.code, (CONCAT ('(',pi.rang,')'))) " +
+    "FROM flights AS fl "+
+    "JOIN planes AS pl ON fl.plane_id = pl.id " +
+    "JOIN pilots AS pi ON fl.pilot_id = pi.id";
 
     public static List<FullData> read() {
         List<FullData> result = new ArrayList<>();
@@ -25,19 +25,16 @@ public class FullDataReader {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                Integer id = resultSet.getInt("id");
+                String number = resultSet.getString("number");
                 Date date = resultSet.getDate("date");
-                Date time = resultSet.getTime("time");
+                Time time = resultSet.getTime("time");
                 String tailNumber = resultSet.getString("tailNumber");
-                String brand = resultSet.getString("brand");
-                String model = resultSet.getString("model");
+                String brandModel = resultSet.getString("CONCAT_WS (' ',pl.brand, pl.model)");
                 Integer passengerCapacity = resultSet.getInt("passengerCapacity");
-                String firstName = resultSet.getString("firstname");
-                String lastName = resultSet.getString("lastName");
-                String code = resultSet.getString("code");
-                PilotRang rang = PilotRang.valueOf(resultSet.getString("rang"));
+                String firstNameLast = resultSet.getString("CONCAT(CONCAT_WS(' ',pi.firstName, SUBSTR(pi.lastName, 1, 1)),'.')");
+                String codeRang = resultSet.getString("CONCAT_WS (' ', pi.code, (CONCAT ('(',pi.rang,')')))");
 
-                result.add(new FullData(id, date, time, tailNumber, brand, model, passengerCapacity, firstName, lastName, code, rang));
+                result.add(new FullData(number, date, time, tailNumber, brandModel, passengerCapacity, firstNameLast, codeRang));
             }
 
         } catch (SQLException e) {

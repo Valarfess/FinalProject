@@ -3,34 +3,28 @@ package academy.belhard.entity;
 import java.util.Date;
 
 public class FullData {
-    private Integer id;
+    private String number;
     private Date date;
     private Date time;
     private String tailNumber;
-    private String brand;
-    private String model;
+    private String brandModel;
     private Integer passengerCapacity;
-    private String firstName;
-    private String lastName;
-    private String code;
-    private PilotRang rang;
+    private String firstNameLast;
+    private String codeRang;
 
-    public FullData(Integer id, Date date, Date time, String tailNumber, String brand, String model, Integer passengerCapacity, String firstName, String lastName, String code, PilotRang rang) {
-        this.id = id;
+    public FullData(String number, Date date, Date time, String tailNumber, String brandModel, Integer passengerCapacity, String firstNameLast, String codeRang) {
+        this.number = number;
         this.date = date;
         this.time = time;
         this.tailNumber = tailNumber;
-        this.brand = brand;
-        this.model = model;
+        this.brandModel = brandModel;
         this.passengerCapacity = passengerCapacity;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.code = code;
-        this.rang = rang;
+        this.firstNameLast = firstNameLast;
+        this.codeRang = codeRang;
     }
 
-    public Integer getId() {
-        return id;
+    public String getNumber() {
+        return number;
     }
 
     public Date getDate() {
@@ -45,47 +39,33 @@ public class FullData {
         return tailNumber;
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
+    public String getBrandModel() {
+        return brandModel;
     }
 
     public Integer getPassengerCapacity() {
         return passengerCapacity;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstNameLast() {
+        return firstNameLast;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public PilotRang getRang() {
-        return rang;
+    public String getCodeRang() {
+        return codeRang;
     }
 
     @Override
     public String toString() {
         return "FullData:" +
-                "id-" + id +
-                ", date-" + date +
-                ", time-" + time +
-                ", tailNumber-'" + tailNumber + '\'' +
-                ", " + brand + " " + model +
-                ", passengerCapacity-" + passengerCapacity +
-                ", firstName-'" + firstName + '\'' +
-                ", lastName-'" + lastName + '\'' +
-                ", code-" + code +
-                " (" + rang + ")" +
+                "number='" + number + '\'' +
+                ", date=" + date +
+                ", time=" + time +
+                ", tailNumber='" + tailNumber + '\'' +
+                ", brandModel='" + brandModel + '\'' +
+                ", passengerCapacity=" + passengerCapacity +
+                ", firstNameLast='" + firstNameLast + '\'' +
+                ", codeRang='" + codeRang + '\'' +
                 '.';
     }
 }

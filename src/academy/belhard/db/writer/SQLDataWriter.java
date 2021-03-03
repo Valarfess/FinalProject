@@ -8,18 +8,20 @@ import academy.belhard.entity.Plane;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 public class SQLDataWriter {
     private static final String ADD_TO_PILOTS = "INSERT INTO pilots (id, firstname, lastname, rang, code) VALUES(?, ?, ?, ?, ?)";
     private static final String ADD_TO_PLANES = "INSERT INTO planes (id, brand, model, passengercapacity, tailnumber) VALUES(?, ?, ?, ?, ?)";
     private static final String ADD_TO_FLIGHTS = "INSERT INTO flights (id, plane_id, pilot_id, date, time, number) VALUES(?, ?, ?, ?, ?, ?)";
 
-    public static void addToPilots(Pilot pilot) {
+    public static void addToPilots(List<Pilot> pilots) {
         Connection connection = ConnectionUtil.getConnection();
+        System.out.println("Начало записи в таблицу 'Pilots'");
+        for (Pilot pilot : pilots)
         try (
                 PreparedStatement statement = connection.prepareStatement(ADD_TO_PILOTS)
         ) {
-            System.out.println("Начало записи в таблицу 'Pilots'");
             statement.setInt(1, pilot.getId());
             statement.setString(2, pilot.getFirstName());
             statement.setString(3, pilot.getLastName());
@@ -27,18 +29,20 @@ public class SQLDataWriter {
             statement.setString(5, pilot.getCode());
 
             statement.executeUpdate();
-            System.out.println("Запись в таблицу 'Pilots' закончена");
+
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("Запись в таблицу 'Pilots' закончена");
     }
-    public static void addToPlanes(Plane plane) {
+    public static void addToPlanes(List<Plane> planes) {
         Connection connection = ConnectionUtil.getConnection();
+        System.out.println("Начало записи в таблицу 'Planes'");
+        for (Plane plane : planes)
         try (
                 PreparedStatement statement = connection.prepareStatement(ADD_TO_PLANES)
         ) {
-            System.out.println("Начало записи в таблицу 'Planes'");
             statement.setInt(1, plane.getId());
             statement.setString(2, plane.getBrand());
             statement.setString(3, plane.getModel());
@@ -46,18 +50,20 @@ public class SQLDataWriter {
             statement.setString(5, plane.getTailNumber());
 
             statement.executeUpdate();
-            System.out.println("Запись в таблицу 'Planes' закончена");
+
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("Запись в таблицу 'Planes' закончена");
     }
-    public static void addToFlights(Flight flight) {
+    public static void addToFlights(List<Flight> flights) {
         Connection connection = ConnectionUtil.getConnection();
+        System.out.println("Начало записи в таблицу 'Flights'");
+        for (Flight flight : flights)
         try (
                 PreparedStatement statement = connection.prepareStatement(ADD_TO_FLIGHTS)
         ) {
-            System.out.println("Начало записи в таблицу 'Flights'");
             statement.setInt(1, flight.getId());
             statement.setInt(2, flight.getPlaneId());
             statement.setInt(3, flight.getPilotId());
@@ -66,11 +72,11 @@ public class SQLDataWriter {
             statement.setString(6, flight.getNumber());
 
             statement.executeUpdate();
-            System.out.println("Запись в таблицу 'Flights' закончена");
+
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("Запись в таблицу 'Flights' закончена");
     }
-
 }
