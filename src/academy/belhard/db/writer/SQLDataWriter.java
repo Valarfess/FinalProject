@@ -30,12 +30,12 @@ public class SQLDataWriter {
 
             statement.executeUpdate();
 
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
         System.out.println("Запись в таблицу 'Pilots' закончена");
     }
+
     public static void addToPlanes(List<Plane> planes) {
         Connection connection = ConnectionUtil.getConnection();
         System.out.println("Начало записи в таблицу 'Planes'");
@@ -51,12 +51,12 @@ public class SQLDataWriter {
 
             statement.executeUpdate();
 
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
         System.out.println("Запись в таблицу 'Planes' закончена");
     }
+
     public static void addToFlights(List<Flight> flights) {
         Connection connection = ConnectionUtil.getConnection();
         System.out.println("Начало записи в таблицу 'Flights'");
@@ -72,8 +72,7 @@ public class SQLDataWriter {
             statement.setString(6, flight.getNumber());
 
             statement.executeUpdate();
-
-
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }
