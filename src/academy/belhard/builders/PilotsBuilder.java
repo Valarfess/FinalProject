@@ -3,9 +3,11 @@ package academy.belhard.builders;
 import academy.belhard.entity.Pilot;
 import academy.belhard.entity.PilotRang;
 
+import static academy.belhard.constants.Constants.DELIMETR;
+
 public class PilotsBuilder {
     public static Pilot builder(String pilotsline) {
-        String[] pilotsData = pilotsline.split(";");
+        String[] pilotsData = pilotsline.split(DELIMETR);
 
         int id = Integer.parseInt(pilotsData[0]);
         String firstName = pilotsData[1];

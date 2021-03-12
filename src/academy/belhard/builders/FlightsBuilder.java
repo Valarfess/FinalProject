@@ -5,11 +5,13 @@ import academy.belhard.entity.Flight;
 import java.sql.*;
 import java.sql.Date;
 
+import static academy.belhard.constants.Constants.DELIMETR;
+
 
 public class FlightsBuilder {
 
     public static Flight builder(String flightsline) {
-        String[] flightsData = flightsline.split(";");
+        String[] flightsData = flightsline.split(DELIMETR);
 
         int id = Integer.parseInt(flightsData[0]);
         int planeId = Integer.parseInt(flightsData[1]);

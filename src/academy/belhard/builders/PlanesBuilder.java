@@ -2,9 +2,11 @@ package academy.belhard.builders;
 
 import academy.belhard.entity.Plane;
 
+import static academy.belhard.constants.Constants.DELIMETR;
+
 public class PlanesBuilder {
     public static Plane builder(String planesline) {
-        String[] planesData = planesline.split(";");
+        String[] planesData = planesline.split(DELIMETR);
 
         int id = Integer.parseInt(planesData[0]);
         String brand = planesData[1];

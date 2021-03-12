@@ -9,9 +9,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+import static academy.belhard.constants.Constants.DELIMETR;
+
 public class FullDataWriter {
 
-    private static final String DELIMETR = ";";
+
 
     public static void FullDataWriter(String fileName, List<FullData> result) {
 
